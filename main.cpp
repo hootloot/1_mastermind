@@ -17,3 +17,4 @@ class code {
             content.resize(n)
         }
 }
+// new 
