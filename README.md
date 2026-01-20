@@ -22,3 +22,6 @@ pseudocode:
 - codemaker responds by printing two values that indicate how close the guess is to the code
 - the first response value is the number of digits that are the right digit in the right location. 
 - the second response is the number of digits that are the right digit in the wrong location. 
+
+
+new comment
