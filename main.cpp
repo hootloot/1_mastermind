@@ -1,12 +1,12 @@
-//the first include statement is assigned to a vector 
-//the statements below (the include statements) utilize the libaries 
+//the first include statement is assigned to a vector
+//the statements below (the include statements) utilize the libaries
 // to make the code function
 #include <vector>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 
-//this statement uses the namespace in order for library names such as 
+//this statement uses the namespace in order for library names such as
 // cout, cin, for print statements to displays the outputs of the code
 using namespace std;
 
@@ -17,16 +17,16 @@ private:
 
 //implemented the vector library in order contain the digits for the code
     vector<int> content;
-// defined n to represent the length of the code and m to represent the range 
+// defined n to represent the length of the code and m to represent the range
 // of the series of numbers
     int n;
     int m;
 
 public:
 
-// defined an object called code to contain the length and range within parameters 
+// defined an object called code to contain the length and range within parameters
     code(int length, int range) {
-        // assigned the length and range to variables n and m 
+        // assigned the length and range to variables n and m
         // implemented the resize function in order to add more numbers to the range
         n = length;
         m = range;
@@ -52,14 +52,14 @@ public:
         }
     }
 
-    // this function will print the output of the code 
+    // this function will print the output of the code
     void print() const {
         // the for statement goes through each part in the code
         for (int i = 0; i < n; i++) {
             // the statement below implements the digit as per the rules and the comma
             cout << content[i] << (i < n - 1 ? ", " : "");
         }
-        
+
         cout << endl;
     }
 
@@ -109,12 +109,12 @@ public:
                     // the number will be considered correct if it is in the wrong location
                     incorrect++;
 
-                    // the secret number will be marked as already used so when analyzing other sequences, the 
+                    // the secret number will be marked as already used so when analyzing other sequences, the
                     // secret number will not be used again
-                    usedSecret[j] = true; 
+                    usedSecret[j] = true;
 
                     // finish checking the numbers and proceed using break
-                    break;                
+                    break;
                 }
             }
         }
@@ -124,9 +124,9 @@ public:
 
     //Similar to the function of the checkIncorrect function
     // the checkCorrect Function applies a similar foundation for the logic but except
-    // the function is going to count how many digits match 
+    // the function is going to count how many digits match
     int checkCorrect(const code& guess) const {
-        
+
         int correct = 0;
         for (int i=0; i < n; i++) {
             if (digitAt(i) == guess.digitAt(i)) {
@@ -198,7 +198,7 @@ ostream& operator<<(ostream& out, const response& r) {
 
 
 
-// part b: 
+// part b:
 
 
 class mastermind {
@@ -234,6 +234,33 @@ class mastermind {
         int incorrect = secretCode.checkIncorrect(guess);
         return response(correct, incorrect);
     }
+    bool isSolved(const response& r) {
+            if (r.getCorrect() == secretCode.length()) {
+                return true;
+            }
+            return false;
+        }
+    void playGame() {
+            /*cout << "Please enter the length of the number you would like to guess, "
+                    "then enter the maximum digit you would like the digits of the number"
+                    "to be set to."<< endl;
+            cin >> n;
+            cin >> m;*/
+            secretCode.initializeRandom();
+            printSecretCode();
+            response Response;
+            for (int i = 0; i < 10; i++) {
+                Response = getResponse(humanGuess());
+                cout << Response <<endl;
+                if (isSolved(Response)) {
+                    cout << "You win!" <<endl;
+                    return;
+                }
+            }
+            cout<<"You lost"<<endl;
+
+
+        }
 
     // Person 3 finishes here
     // playGame(), etc
