@@ -273,5 +273,27 @@ int main() {
     // statement required to generate random values
     srand(time(0));
     int n, m;
+    cout << "Please enter the length of your code (1-10): ";
+    cin >> n;
+    cout << "Enter max digit value (1-10): ";
+    cin >> m;
+
+    if (n < 1 || n > 10) {
+        cout << "This is Invalid. Since this is Invalid, the value that will be used is 5" << endl;
+        n = 5;
+    }
+    if (m < 1 || m > 10) {
+        cout << "This is Invalid. Since this is Invalid, the value that will be used is 10" << endl;
+        m = 10;
+    }
+
+    mastermind game(n, m);
+    
+    cout << "This is the Secret Code: ";
+    game.printSecretCode();
+    cout << endl;
+
+    game.playGame();
+    
     return 0;
 }
