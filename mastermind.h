@@ -13,27 +13,30 @@
 class mastermind 
 {
     private:
-        code secretCode;
-        int n;
-        int m;
+        code secretCode; // random secret code
+        int n; // length of code
+        int m; // range of digits
 
     public:
         mastermind(int length, int range);
+        // initializes the game with a code
 
         mastermind();
+        // initalizes the game with default values
 
         void printSecretCode() const;
+        // prints the secret code
 
         code humanGuess();
+        // reads the input and returns a code object representing that guess
 
         response getResponse(const code& guess);
+        // returns a response object containing the count of correct and incorrect
 
-        bool isSolved(const response& r);
+        bool isSolved(const response& r); // returns true if the response was guessed correctly
 
-        void playGame();
-
-    // Person 3 finishes here
-    // playGame(), etc
+        void playGame(); 
+        // initializes the secret code, then enters a loop asking for guesses
 
 };
 

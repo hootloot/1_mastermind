@@ -1,6 +1,9 @@
 // File: main.cpp
 // Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
 // Assignment: Project Mastermind Part B
+// handles initial setup, including the random number generator
+// inputs user configuration and initiates the game loop
+
 
 #include <cstdlib>
 #include <ctime>
