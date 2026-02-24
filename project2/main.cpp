@@ -1,3 +1,7 @@
+// File: main.cpp
+// Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
+// Assignment: Project Flip cards part a
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -7,27 +11,27 @@
 using namespace std;
 
 int main() {
-    srand(static_cast<unsigned>(time(0)));
+    srand(static_cast<unsigned>(time(0))); // seed random
 
     deck myDeck;
 
-    // Print deck before shuffling
-    cout << "=== Deck Before Shuffle ===" << endl;
+    // prints deck before shuffling
+    cout << "Deck Before Shuffle" << endl;
     cout << myDeck << endl;
 
-    // Shuffle three times
+    // shuffle 3 times
     myDeck.shuffle();
     myDeck.shuffle();
     myDeck.shuffle();
 
-    // Print deck after shuffling
-    cout << "=== Deck After Shuffle ===" << endl;
+    // prints deck after shuffling
+    cout << "Deck After Shuffle" << endl;
     cout << myDeck << endl;
 
-    // --- Game: Flip ---
+    
     // Draw 24 cards face down
     card table[24];
-    bool faceUp[24] = { false };
+    bool faceUp[24] = { false }; // keeps track of which cards have been flipped
     for (int i = 0; i < 24; i++) {
         table[i] = myDeck.deal();
     }
@@ -35,10 +39,10 @@ int main() {
     double score = 0.0;
     int flipped = 0;
 
-    cout << "=== Welcome to Flip! ===" << endl;
+    cout << "Welcome to Flip!" << endl;
 
     while (true) {
-        // Display the 24 cards (face-down or revealed)
+        // show all 24 cards, ??? if face dow
         cout << "\nYour cards:" << endl;
         for (int i = 0; i < 24; i++) {
             cout << "  [" << (i + 1) << "] ";
@@ -50,30 +54,34 @@ int main() {
         }
         cout << "\nScore: " << score << "  |  Cards flipped: " << flipped << "/24" << endl;
 
-        // Check if all cards are flipped
+        // if everything is flipped we're done
         if (flipped == 24) {
             cout << "All cards have been flipped!" << endl;
             break;
         }
 
+        // ask player to pick a card or end game
         cout << "Enter a card number (1-24) to flip, or 0 to end the game: ";
         int choice;
         cin >> choice;
 
         if (choice == 0) break;
 
+        // make sure the input is a valid choice
         if (choice < 1 || choice > 24) {
             cout << "Invalid choice. Try again." << endl;
             continue;
         }
 
         int idx = choice - 1;
+
+        // check if already flipped
         if (faceUp[idx]) {
             cout << "That card is already flipped. Choose another." << endl;
             continue;
         }
 
-        // Flip the card
+        // Flip the card and output it
         faceUp[idx] = true;
         flipped++;
         card c = table[idx];
@@ -82,31 +90,31 @@ int main() {
         int v = c.getValue();
         Suit s = c.getSuit();
 
-        // Apply scoring rules
+        // apply the scoring rules
         if (v == 1) {              // Ace
             score += 10;
-            cout << "  +10 points (Ace)" << endl;
-        } else if (v >= 11) {     // Jack, Queen, King
+            cout << "  +10 (Ace)" << endl;
+        } else if (v >= 11) {     // Jack, Queen, King, face cards
             score += 5;
-            cout << "  +5 points (Face card)" << endl;
-        } else if (v >= 8 && v <= 10) {
-            cout << "  +0 points (8, 9, or 10)" << endl;
-        } else if (v == 7) {
+            cout << "  +5 (Face card)" << endl;
+        } else if (v >= 8 && v <= 10) { // 8 - 10 = nothing
+            cout << "  +0 (8, 9, or 10)" << endl;
+        } else if (v == 7) { // 7, lose half
             score /= 2.0;
-            cout << "  Lost half your points! (7)" << endl;
-        } else {                   // 2-6
+            cout << "  Lost half your points (7)" << endl;
+        } else {                   // 2-6, lose everything
             score = 0;
-            cout << "  Lost ALL your points! (" << v << ")" << endl;
+            cout << "  Lost all your points (" << v << ")" << endl;
         }
 
-        // Bonus for hearts
+        // hearts give a bonus point on top of whatever else happed
         if (s == HEART) {
             score += 1;
-            cout << "  +1 bonus point (Heart)" << endl;
+            cout << "  +1 bonus (Heart)" << endl;
         }
     }
 
-    cout << "\n=== Game Over ===" << endl;
+    cout << "\nGame Over" << endl;
     cout << "Final Score: " << score << endl;
 
     return 0;

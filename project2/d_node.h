@@ -1,3 +1,7 @@
+// File: d_node.h
+// Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
+// Assignment: Project Flip cards part a
+
 #ifndef NODE_CLASS
 #define NODE_CLASS
 
@@ -5,7 +9,7 @@
 #include <cstddef>
 #endif  // NULL
 
-// linked list node
+// node for linked list, holds a value and pointer to next node
 template <typename T>
 class node
 {
@@ -14,6 +18,7 @@ class node
       node<T> *next;    // next node in the list
 
       // default constructor with no initial value
+      // next starts as NULL
       node() : next(NULL)
       {}
 

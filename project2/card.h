@@ -1,3 +1,7 @@
+// File: card.h
+// Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
+// Assignment: Project Flip cards part a
+
 #ifndef CARD_H
 #define CARD_H
 
@@ -5,24 +9,26 @@
 
 enum Suit { CLUB, DIAMOND, HEART, SPADE };
 
+// suits for the cards
 class card {
 private:
-    int value;      
+    int value; // 1 = ace, 2-10 = number, 11 = jack, 12 = queen, 13 = king 
     Suit suit;
 
 public:
-   
+   // default construcor, thus makes ace of clubs
     card() {
         value = 1;
         suit = CLUB;
     }
 
+    // constructor with value and suit
     card(int v, Suit s) {
         value = v;
         suit = s;
     }
 
-    
+    // setters
     void setValue(int v) {
         value = v;
     }
@@ -32,6 +38,7 @@ public:
         suit = s;
     }
 
+    // getter functions
     int getValue() const {
         return value;
     }
@@ -41,10 +48,10 @@ public:
         return suit;
     }
 
-   
+   // prints card like "Ace of spades, etc"
     friend std::ostream& operator<<(std::ostream& os, const card& c) {
 
-      
+        // print name for face cards, otherwise just the number
         if (c.value == 1)
             os << "Ace";
         else if (c.value == 11)
@@ -58,7 +65,7 @@ public:
 
         os << " of ";
 
-     
+        // print suit name
         if (c.suit == CLUB)
             os << "Clubs";
         else if (c.suit == DIAMOND)
@@ -75,20 +82,4 @@ public:
 #endif
 
 
-#include <iostream>
-#include "card.h"
 
-int main() {
-
-    card c1;                    // default (Ace of Clubs)
-    card c2(1, SPADE);          // Ace of Spades
-    card c3(12, HEART);         // Queen of Hearts
-    card c4(7, DIAMOND);        // 7 of Diamonds
-
-    std::cout << c1 << std::endl;
-    std::cout << c2 << std::endl;
-    std::cout << c3 << std::endl;
-    std::cout << c4 << std::endl;
-
-    return 0;
-}
