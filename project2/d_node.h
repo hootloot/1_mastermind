@@ -9,7 +9,7 @@
 #include <cstddef>
 #endif  // NULL
 
-// node for linked list, holds a value and pointer to next node
+// linked list node
 template <typename T>
 class node
 {
@@ -18,7 +18,6 @@ class node
       node<T> *next;    // next node in the list
 
       // default constructor with no initial value
-      // next starts as NULL
       node() : next(NULL)
       {}
 
