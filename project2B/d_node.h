@@ -14,8 +14,8 @@ template <typename T>
 class node
 {
    public:
-      T nodeValue;      // data held by the node
-      node<T> *next;    // next node in the list
+      T nodeValue; // data held by the node
+      node<T> *next; // next node in the list
 
       // default constructor with no initial value
       node() : next(NULL)
