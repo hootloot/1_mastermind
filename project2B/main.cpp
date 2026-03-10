@@ -12,39 +12,34 @@ using namespace std;
 
 // global function that runs the entire flip game
 void playFlip() {
-    // (1) initialize a deck with 52 cards in order
+    // initialize a deck with 52 cards in order
     deck myDeck;
 
-    // (2) shuffle the deck and print all cards after shuffle
+    // shuffle the deck and print all cards after shuffle
     myDeck.shuffle();
     myDeck.shuffle();
     myDeck.shuffle();
     cout << "Deck after shuffle:" << endl;
     cout << myDeck << endl;
 
-    // (3) draw the top 24 cards from the deck and insert into the hand deck
+    // draw the top 24 cards from the deck and insert into the hand deck
     // first we need an empty hand deck, so we create one and clear it
-    deck hand;
-    while (hand.front != NULL) {
-        node<card>* temp = hand.front;
-        hand.front = hand.front->next;
-        delete temp;
-    }
+    deck hand(false);
 
     // deal 24 cards from the main deck and place them in the hand
     for (int i = 0; i < 24; i++) {
         hand.replace(myDeck.deal());
     }
 
-    // (4) print the hand deck and the remaining cards in the main deck
+    // print the hand deck and the remaining cards in the main deck
     cout << "Hand deck (24 cards):" << endl;
     cout << hand << endl;
 
     cout << "Remaining deck (" << myDeck.size() << " cards):" << endl;
     cout << myDeck << endl;
 
-    // (5) start the game
-    // keep track of which cards have been flipped (bonus: each card only flipped once)
+    // start the game
+    // keep track of which cards have been flipped
     bool faceUp[24] = { false };
     double score = 0.0;
     int flipped = 0;

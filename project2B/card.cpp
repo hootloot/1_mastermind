@@ -1,6 +1,6 @@
 // File: card.cpp
 // Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
-// Assignment: Project Flip cards part a
+// Assignment: Project Flip cards part b
 
 #include "card.h"
 
@@ -9,6 +9,21 @@ card::card() : value(1), suit(CLUB) {}
 
 // constructor with value and suit
 card::card(int v, Suit s) : value(v), suit(s) {}
+
+// copy constructor
+card::card(const card& other) {
+    value = other.value;
+    suit = other.suit;
+}
+
+// overloaded assignment operator
+card& card::operator=(const card& other) {
+    if (this != &other) {
+        value = other.value;
+        suit = other.suit;
+    }
+    return *this;
+}
 
 // setters
 void card::setValue(int v) { value = v; }
@@ -22,7 +37,6 @@ Suit card::getSuit() const { return suit; }
 
 // prints card like "Ace of spades, etc"
 std::ostream& operator<<(std::ostream& os, const card& c) {
-    // print name for face cards, otherwise just the number
     if (c.value == 1)
         os << "Ace";
     else if (c.value == 11)
@@ -36,7 +50,6 @@ std::ostream& operator<<(std::ostream& os, const card& c) {
 
     os << " of ";
 
-    // print suit name
     if (c.suit == CLUB)
         os << "Clubs";
     else if (c.suit == DIAMOND)

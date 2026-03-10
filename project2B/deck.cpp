@@ -11,7 +11,9 @@ using namespace std;
 // Constructor: creates a full 52-card deck in order
 // goes ace through king for each suit
 // suit order: clubs, diamonds, hearts, spades
-deck::deck() : front(NULL) {
+deck::deck(bool makeFullDeck) : front(NULL) {
+    if (!makeFullDeck) return;
+
     node<card>* tail = NULL; // keeps track of the end so we can add to the back
     Suit suits[] = { CLUB, DIAMOND, HEART, SPADE };
 

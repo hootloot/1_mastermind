@@ -16,7 +16,7 @@ public:
     // Constructor: creates a full 52-card deck in order
     // goes ace through king for each suit
     // suit order: clubs, diamonds, hearts, spades
-    deck();
+    deck(bool makeFullDeck = true);
 
     // Destructor, goes through the list and deletes every node
     // need this or else we get memory leaks
