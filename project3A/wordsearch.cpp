@@ -141,51 +141,70 @@ char grid::getChar(int i, int j) const { return mat[i][j]; }
 // binary search. If found and not already printed, it outputs the word.
 // Wrapping is handled with modulo so going off one edge comes back
 // on the opposite side. Uses a set to avoid printing duplicates.
+int gcdInt(int a, int b)
+{
+    while (b != 0)
+    {
+        int t = a % b;
+        a = b;
+        b = t;
+    }
+    return a;
+}
+
+int stepsInDirection(int rows, int cols, int dr, int dc)
+{
+    // Horizontal wrap cycle
+    if (dr == 0) return cols;
+
+    // Vertical wrap cycle
+    if (dc == 0) return rows;
+
+    // Diagonal wrap cycle
+    return (rows * cols) / gcdInt(rows, cols);   // lcm(rows, cols)
+}
+
 void findMatches(const dictionary &dict, const grid &g, const string &outputFile)
 {
     int n = g.getRows();
     int m = g.getCols();
 
-    // Direction offsets for: N, NE, E, SE, S, SW, W, NW
+    // N, NE, E, SE, S, SW, W, NW
     int dr[] = {-1, -1, 0, 1, 1, 1, 0, -1};
     int dc[] = {0, 1, 1, 1, 0, -1, -1, -1};
 
     ofstream fout(outputFile.c_str());
-    set<string> found; // keeps track of words already printed
+    if (!fout)
+        throw fileOpenError(outputFile);
 
-    // Try every starting cell
+    int totalMatches = 0;
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
         {
-            // Try all 8 directions from this cell
             for (int d = 0; d < 8; d++)
             {
                 string word = "";
-                int r = i, c = j;
+                int r = i;
+                int c = j;
 
-                // Walk up to max(n,m) steps — after that we'd wrap
-                // back to the start and repeat characters
-                int maxSteps = (n > m) ? n : m;
+                int maxSteps = stepsInDirection(n, m, dr[d], dc[d]);
 
                 for (int step = 0; step < maxSteps; step++)
                 {
                     word += g.getChar(r, c);
 
-                    // Only look up words that are at least 5 chars long
                     if ((int)word.length() >= 5)
                     {
                         int idx = dict.binarySearch(word);
-                        if (idx != -1 && found.find(word) == found.end())
+                        if (idx != -1)
                         {
-                            found.insert(word);
-                            cout << "found: " << word << endl;
-                            fout << "found: " << word << endl;
+                            fout << word << " (" << i << "," << j << ") " << idx << endl;
+                            totalMatches++;
                         }
                     }
 
-                    // Move to next cell in this direction, wrapping around
-                    // the +n and +m prevent negative values before the mod
                     r = (r + dr[d] + n) % n;
                     c = (c + dc[d] + m) % m;
                 }
@@ -194,7 +213,7 @@ void findMatches(const dictionary &dict, const grid &g, const string &outputFile
     }
 
     fout.close();
-    cout << endl << "Total words found: " << found.size() << endl;
+    cout << "Total matches found: " << totalMatches << endl;
 }
 
 // Main driver function. Asks the user for the grid filename,
