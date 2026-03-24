@@ -1,7 +1,6 @@
-// Word Search Puzzle Solver
-// This program reads a grid of letters and a dictionary file,
-// then finds all valid words (length >= 5) hidden in the grid.
-// Words can go in all 8 directions and wrap around edges.
+// File: wordsearch.cpp
+// Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
+// Assignment: Project 3A
 
 #include <iostream>
 #include <fstream>
@@ -98,7 +97,6 @@ int dictionary::binarySearch(const string &word) const
     return -1;
 }
 
-// ===================== grid class =====================
 // Stores the letter grid from a file using the provided matrix class.
 // Gives access to individual characters and the grid dimensions.
 class grid
@@ -210,7 +208,6 @@ void search()
 
     // Read in all the words from the dictionary file
     dictionary dict;
-    cout << "Reading dictionary..." << endl;
     dict.readWords("Dictionary");
     cout << "Dictionary loaded: " << dict.size() << " words" << endl;
 
@@ -220,15 +217,12 @@ void search()
     cout << "Grid loaded: " << g.getRows() << " x " << g.getCols() << endl;
 
     // Sort the dictionary so we can use binary search later
-    cout << "Sorting dictionary (selection sort)..." << endl;
     dict.selectionSort();
     cout << "Sort complete." << endl;
 
     // Search the grid and write results to an output file
     string outputFile = gridFile.substr(0, gridFile.find('.')) + "_results.txt";
-    cout << "Searching for matches..." << endl << endl;
     findMatches(dict, g, outputFile);
-    cout << "Results written to " << outputFile << endl;
 }
 
 // Main just calls search() inside a try-catch to handle
