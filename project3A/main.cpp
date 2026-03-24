@@ -450,7 +450,6 @@ void search()
 
     // Read in all the words from the dictionary file
     dictionary dict;
-    cout << "Reading dictionary..." << endl;
     dict.readWords("Dictionary");
     cout << "Dictionary loaded: " << dict.size() << " words" << endl;
 
@@ -460,13 +459,11 @@ void search()
     cout << "Grid loaded: " << g.getRows() << " x " << g.getCols() << endl;
 
     // Sort the dictionary so we can use binary search later
-    cout << "Sorting dictionary (selection sort)..." << endl;
     dict.selectionSort();
     cout << "Sort complete." << endl;
 
     // Search the grid and write results to an output file
     string outputFile = gridFile.substr(0, gridFile.find('.')) + "_results.txt";
-    cout << "Searching for matches..." << endl << endl;
     findMatches(dict, g, outputFile);
     cout << "Results written to " << outputFile << endl;
 }
