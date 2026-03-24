@@ -13,7 +13,6 @@
 
 using namespace std;
 
-// ===================== dictionary class =====================
 // Stores a list of words from a file and provides sorting
 // and searching functionality to look up words efficiently.
 class dictionary
@@ -138,7 +137,6 @@ int grid::getRows() const { return rows; }
 int grid::getCols() const { return cols; }
 char grid::getChar(int i, int j) const { return mat[i][j]; }
 
-// ===================== findMatches =====================
 // Goes through every cell in the grid and tries all 8 directions.
 // For each direction, builds up a string one character at a time.
 // Once the string is 5+ characters, it checks the dictionary using
@@ -201,7 +199,6 @@ void findMatches(const dictionary &dict, const grid &g, const string &outputFile
     cout << endl << "Total words found: " << found.size() << endl;
 }
 
-// ===================== search =====================
 // Main driver function. Asks the user for the grid filename,
 // reads in both the dictionary and the grid, sorts the dictionary,
 // then calls findMatches to search for all valid words.
