@@ -61,7 +61,7 @@ ostream &operator<<(ostream &os, const dictionary &d)
 
 // Sorts the word list alphabetically using selection sort.
 // For each position i, finds the smallest word in the rest of the
-// list and swaps it into place. O(n^2) but simple to implement.
+// list and swaps it into place. 
 void dictionary::selectionSort()
 {
     int n = words.size();
