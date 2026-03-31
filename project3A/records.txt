@@ -1,0 +1,36 @@
+minwoo@Ryans-MacBook-Air project3A % ./wordsearch
+Select sorting algorithm:
+  1) Selection sort
+  2) Quicksort
+  3) Heapsort
+Choice: 1
+Enter grid filename: input15.txt
+Dictionary loaded: 88994 words
+Grid loaded: 15 x 15
+Sorting with selection sort
+Sort complete. Time: 149.707 seconds
+Total matches found: 22
+minwoo@Ryans-MacBook-Air project3A % ./wordsearch
+Select sorting algorithm:
+  1) Selection sort
+  2) Quicksort
+  3) Heapsort
+Choice: 2
+Enter grid filename: input15.txt
+Dictionary loaded: 88994 words
+Grid loaded: 15 x 15
+Sorting with quicksort
+Sort complete. Time: 0.106972 seconds
+Total matches found: 22
+minwoo@Ryans-MacBook-Air project3A % ./wordsearch
+Select sorting algorithm:
+  1) Selection sort
+  2) Quicksort
+  3) Heapsort
+Choice: 3
+Enter grid filename: input15.txt
+Dictionary loaded: 88994 words
+Grid loaded: 15 x 15
+Sorting with heapsort
+Sort complete. Time: 0.181868 seconds
+Total matches found: 22
