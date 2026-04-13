@@ -110,8 +110,4 @@ void matrix<T>::resize(int numRows, int numCols)
 		mat[i].resize(nCols);
 }
 
-#endif	
-
-// The sorting algorithm that is the fastest is QuickSort
-// this is explained more in the canvas comment
-// as instructed by the Professor
+#endif	// MATRIX_CLASS

@@ -1,6 +1,6 @@
 // File: board.h
 // Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
-// Assignment: Project Sudoku part A
+// Assignment: Project Sudoku 4 part A
 
 #ifndef BOARD_H
 #define BOARD_H
