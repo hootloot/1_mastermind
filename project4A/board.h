@@ -1,10 +1,6 @@
-// Project 4a - Sudoku Board Class
-// Ryan
-// EECE 2560
-//
-// Board class for reading, storing, and checking Sudoku puzzles.
-// Uses the improved conflict tracking approach with boolean matrices
-// for rows, columns, and squares.
+// File: board.h
+// Names: Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
+// Assignment: Project Sudoku part A
 
 #ifndef BOARD_H
 #define BOARD_H
@@ -32,7 +28,7 @@ const int MaxValue = 9;
 
 int squareNumber(int i, int j)
 // Return the square number of cell i,j (counting from left to right,
-// top to bottom). Note that i and j each go from 1 to BoardSize.
+// top to bottom). 
 {
    // (i-1)/SquareSize and (j-1)/SquareSize give the x-y coordinates
    // of the square that (i,j) is in.
@@ -61,8 +57,7 @@ class board
       // dimension, i.e., they are each (BoardSize+1) * (BoardSize+1)
 
       matrix<ValueType> value;
-
-      // Conflict tracking (improved approach):
+      
       // rowConf[i][v] = true if digit v is placed in row i
       // colConf[j][v] = true if digit v is placed in col j
       // sqConf[s][v]  = true if digit v is placed in square s
