@@ -1,10 +1,8 @@
 // main.cpp
 // Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
 // Project 4 Part B - Sudoku Solver
-//
-// Reads Sudoku puzzles from a file, solves each one using
-// recursive backtracking, prints the solution and the number of
-// recursive calls, then prints the average across all boards.
+
+
 
 #include <iostream>
 #include <fstream>

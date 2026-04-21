@@ -2,9 +2,8 @@
 // Ryan Kim, Maddox Grillo-Smith, Vishnu Kumar, Preeth Somanchi
 // Project 4 Part B - Sudoku Solver
 //
-// Contains the board class which stores a Sudoku puzzle and
-// provides functions to read, print, check conflicts, and solve
-// the board using recursive backtracking.
+// Contains the board class which stores a Sudoku puzzle
+
 
 #ifndef BOARD_H
 #define BOARD_H
